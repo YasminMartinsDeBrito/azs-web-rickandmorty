@@ -1,0 +1,35 @@
+
+.button-next, .button-previous{
+    border: none;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #369046;
+    box-shadow: 2px 2px 2px 1px #8ae461 ;
+}
+.button-next:hover, .button-previous:hover{
+    background-color: #8ae461;
+    box-shadow: 2px 2px 2px 1px #369046 ;
+}
+.button-next:active, .button-previous:active{
+    background-color: #369046;
+    box-shadow: 2px 2px 2px 1px #8ae461 ;
+    margin-bottom: 1px;
+}
+.container-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+}
+.episode-container{
+    width: 300px;
+    max-width: 780px;
+    border-radius: 10px;
+    margin:10px;
+    color:#000;
+    background-image: linear-gradient(to top ,
+    #44d2b5,   #8ae461);
+    cursor: pointer;
+}
