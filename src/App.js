@@ -38,8 +38,6 @@ function App() {
 
       <footer>
         <cite>Yasmin Martins de Brito</cite>
-        <p>Links: </p><Link to={"https://github.com/YasminMartinsDeBrito"} target="_blank">GitHub </Link>{" - "}
-        <Link to={"https://www.linkedin.com/in/yasminmarcelino/"} target="_blank"> Linkedin</Link>
         <p>Created created with: <span>React, Graphql, CSS, React-icons, Apollo-client</span></p>
       </footer>
     </>
