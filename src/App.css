@@ -6,10 +6,12 @@
 header{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
   padding: 5px;
   background-image: linear-gradient(to bottom, #4ffccb, #86cd6c, 
   #bcf0e1);
+  width: 100vw;
 }
 
 .inputDiv{
