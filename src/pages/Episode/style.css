@@ -1,4 +1,6 @@
-
+.div-button{
+    display: flex;
+}
 .button-next, .button-previous{
     border: none;
     margin: 10px;
@@ -16,20 +18,43 @@
     box-shadow: 2px 2px 2px 1px #8ae461 ;
     margin-bottom: 1px;
 }
-.container-list{
+.visto{
+    background-color: transparent;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+.visto:hover{
+    background-color: rgba(229, 226, 221, 0.36);
+}
+.visto:active{
+    background-color: transparent
+}
+.link{
+    color: #fff;
+    text-align: center;
+    margin: 10px;
+}
+.div-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: stretch;
 }
-.episode-container{
+.container-episode{
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 15px;
     width: 300px;
-    max-width: 780px;
-    border-radius: 10px;
-    margin:10px;
-    color:#000;
-    background-image: linear-gradient(to top ,
-    #44d2b5,   #8ae461);
+    list-style: none;
     cursor: pointer;
+    border-radius: 15px;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    background-color: #392e59;
+    border: 10px double #8ae461;
+    background-image: linear-gradient(to top ,#392e59,#f84a5f);
 }

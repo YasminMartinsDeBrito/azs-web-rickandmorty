@@ -4,7 +4,7 @@
     ○ Data em que foi ao ar
     ○ Quantidade de personagens que participaram -->
 
-● Detalhar o episódio. Nessa tela deve mostrar:
+<!-- ● Detalhar o episódio. Nessa tela deve mostrar:
     ○ Número do episódio
     ○ Nome
     ○ Data em que foi ao ar
@@ -12,9 +12,9 @@
        ■ Foto
        ■ Nome
        ■ Espécie
-       ■ Status
+       ■ Status -->
 
 <!-- ● Favoritar e Desfavoritar um episódio -->
-● Marcar um episódio como Visto
+<!-- ● Marcar um episódio como Visto -->
 <!-- ● Listar episódios favoritos -->
 <!-- ● Buscar episódio pelo nome -->

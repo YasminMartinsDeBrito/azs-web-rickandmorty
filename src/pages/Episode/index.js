@@ -1,5 +1,9 @@
 import "./style.css";
-import {useHistory} from "react-router-dom"
+import { Link } from "react-router-dom";
+
+import { FcLike } from "react-icons/fc";
+import { MdOutlineExpandMore } from "react-icons/md";
+import { BsCheckAll } from "react-icons/bs";
 
 import { useContext } from "react";
 import { EpisodeContext } from "../../provider/episode";
@@ -8,17 +12,14 @@ import { useQuery } from "@apollo/client";
 import EPISODE_INFO from "../../querys/episode";
 
 const Episode = () => {
-  const history = useHistory()
-
   const {
     pages,
-    setInput,
-    showEpisode,
     input,
     handleClick,
     next,
     previous,
-    filteredEpisodes
+    filteredEpisodes,
+    episodeVisto,
   } = useContext(EpisodeContext);
 
   const { loading, error, data } = useQuery(EPISODE_INFO, {
@@ -30,47 +31,50 @@ const Episode = () => {
 
   return (
     <>
-      <div className="inputDiv">
-        <input
-          className="inputs"
-          placeholder="Digitar Pesquisa"
-          onChange={(event) => setInput(event.target.value)}
-        />
-        <button className="buttonInput" onClick={() => showEpisode(input)}>
-          <p className="inputP">Pesquisar</p>
-        </button>
-      </div>
-      <div>
-        <button className="button-next" onClick={next}>
-          Next
-        </button>
-        <button className="button-previous" onClick={previous}>
-          Previous
-        </button>
-      </div>
       {input === "" ? (
-        <div className="container-list">
-          {data.episodes.results.map((ep) => (
-            <div className="episode-container" key={ep.id}>
-              <p>Ep: {ep.episode}</p>
-              <p>Name: {ep.name}</p>
-              <strong>Launch: {ep.air_date}</strong>
-              <p>Participants: {ep.characters.length}</p>
-              <button onClick={() => handleClick(ep.id)}>Favoritar</button>
-              <button onClick={() => history.push("/id")}>Ver mais</button>
-            </div>
-          ))}
-        </div>
+        <>
+          <div className="div-button">
+            <button className="button-next" onClick={next}>
+              Next
+            </button>
+            <button className="button-previous" onClick={previous}>
+              Previous
+            </button>
+          </div>
+          <div className="div-container">
+            {data.episodes.results.map((ep) => (
+              <div className="container-episode" key={ep.id}>
+                <button className="visto" onClick={() => episodeVisto(ep.id)}>
+                  <BsCheckAll /> assitido
+                </button>
+                <p>Ep: {ep.episode}</p>
+                <p>Name: {ep.name}</p>
+                <strong>Launch: {ep.air_date}</strong>
+                <p>Participants: {ep.characters.length}</p>
+                <button onClick={() => handleClick(ep.id)}>
+                  <FcLike />
+                  Like
+                </button>
+                <Link className="link" to={`episode/${ep.id}`}>
+                  <MdOutlineExpandMore />
+                  Ver Mais
+                </Link>
+              </div>
+            ))}
+          </div>
+        </>
       ) : (
-        <div className="container-list">
+        <div className="div-container">
           {filteredEpisodes.map((item) => (
-            <div className="episode-container" key={item.id}>
-              <p>Ep: {item.itemisode}</p>
+            <div className="container-episode" key={item.id}>
+              <p>Ep: {item.episode}</p>
               <p>Name: {item.name}</p>
               <strong>Launch: {item.air_date}</strong>
-              {/* <strong>Create: {item.created}</strong> */}
               <p>Participants: {item.characters.length}</p>
-              <button onClick={() => handleClick(item.id)}>Favoritar</button>
+              <button onClick={() => handleClick(item.id)}>
+                <FcLike />
+                Like
+              </button>
             </div>
           ))}
         </div>

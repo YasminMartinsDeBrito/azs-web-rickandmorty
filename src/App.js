@@ -1,35 +1,49 @@
-import './App.css';
-import Router from './routes';
-import {useHistory} from "react-router-dom"
-import { useContext } from 'react';
-import { EpisodeContext } from './provider/episode';
-function App(){
+import "./App.css";
 
-  const {favorite} = useContext(EpisodeContext)
+import Router from "./routes";
+import { Link } from "react-router-dom";
 
-  const history = useHistory()
+import { EpisodeContext } from "./provider/episode";
+import { useContext } from "react";
 
-  
-  return(
+function App() {
+
+  const { favorite, setInput, showEpisode, input, visto } = useContext(EpisodeContext);
+
+
+  return (
     <>
-    <header>
-      Rick and Morty
+      <header>
+       <h1>Rick And Morty</h1>
+        <Link className="voltar" to="/">Home</Link>
+        <Link className="favorite" to="/favorite">Favoritos <span>{favorite.length}</span></Link>
+       
+        <Link className="assistidos" to="/visto">Assistidos <span>{visto.length}</span></Link>
+       
+        <div className="inputDiv">
+          <input
+            className="inputs"
+            placeholder="Digitar Pesquisa"
+            onChange={(event) => setInput(event.target.value)}
+          />
+          <button className="buttonInput" onClick={() => showEpisode(input)}>
+            <p className="inputP">Pesquisar</p>
+          </button>
+        </div>
+      </header>
 
-      <button onClick={() => history.push("/favorite")}>Favorite</button>
-      <button onClick={() => history.push(`/id`)}>Favorite</button>
-      <p>{favorite.length}</p>
-    </header>
+      <main>
+        <Router />
+      </main>
 
-    <main>
-       <Router/>
-    </main>
-
-    <footer>
-      <cite>Yasmin Martins de Brito</cite>
-      <p>Created  created with react, graphql, css</p>
-    </footer>
+      <footer>
+        <cite>Yasmin Martins de Brito</cite>
+        <p>Links: </p><Link to={"https://github.com/YasminMartinsDeBrito"} target="_blank">GitHub </Link>{" - "}
+        <Link to={"https://www.linkedin.com/in/yasminmarcelino/"} target="_blank"> Linkedin</Link>
+        <p>Created created with: <span>React, Graphql, CSS, React-icons, Apollo-client</span></p>
+      </footer>
     </>
-  )
+  );
 }
 
 export default App;
